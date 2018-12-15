@@ -123,21 +123,38 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		BE4D1BBB2168093600E21A30 /* Model */ = {
+		D0B11DA121C4DD0200860149 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				BE4D1BB72168078300E21A30 /* User.swift */,
 				BE4D1BB92168082300E21A30 /* Tweet.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		D0B11D9E21C4CC5300860149 /* View */ = {
+		D0B11DA221C4DD3900860149 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D0B11D9F21C4CC7D00860149 /* TweetCell.swift */,
 			);
-			name = View;
+			path = View;
+			sourceTree = "<group>";
+		};
+		D0B11DA321C4DD5400860149 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BEBC8367211F4199003A5FE1 /* TimelineViewController.swift */,
+				ED1AFD601E94496E00FD4B90 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D0B11DA421C4DD7B00860149 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ED1AFD5E1E94421000FD4B90 /* APIManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		ED1AFD241E942B2500FD4B90 = {
@@ -167,10 +184,10 @@
 			children = (
 				ED1AFD341E942B2500FD4B90 /* Main.storyboard */,
 				ED1AFD301E942B2500FD4B90 /* AppDelegate.swift */,
-				BE4D1BBB2168093600E21A30 /* Model */,
-				D0B11D9E21C4CC5300860149 /* View */,
-				ED1D234A1EF6E3B800C51ACC /* Controller */,
-				ED1D23501EF7650B00C51ACC /* API */,
+				D0B11DA121C4DD0200860149 /* Model */,
+				D0B11DA221C4DD3900860149 /* View */,
+				D0B11DA321C4DD5400860149 /* Controller */,
+				D0B11DA421C4DD7B00860149 /* API */,
 				EDC4B7361E98627100D836AC /* twitter_alamofire_demo.entitlements */,
 				ED1AFD371E942B2500FD4B90 /* Assets.xcassets */,
 				ED1AFD391E942B2500FD4B90 /* LaunchScreen.storyboard */,
@@ -195,23 +212,6 @@
 				ED1AFD521E942B2500FD4B90 /* Info.plist */,
 			);
 			path = twitter_alamofire_demoUITests;
-			sourceTree = "<group>";
-		};
-		ED1D234A1EF6E3B800C51ACC /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				BEBC8367211F4199003A5FE1 /* TimelineViewController.swift */,
-				ED1AFD601E94496E00FD4B90 /* LoginViewController.swift */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		ED1D23501EF7650B00C51ACC /* API */ = {
-			isa = PBXGroup;
-			children = (
-				ED1AFD5E1E94421000FD4B90 /* APIManager.swift */,
-			);
-			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
