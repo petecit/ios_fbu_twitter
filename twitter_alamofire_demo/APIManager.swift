@@ -15,8 +15,8 @@ import KeychainAccess
 class APIManager: SessionManager {
     
     // MARK: TODO: Add App Keys
-    static let consumerKey = "YOUR_KEY_HERE"
-    static let consumerSecret = "YOUR_SECRET_HERE"
+    static let consumerKey = "11eLhtw78f8XpGZKQtSA8PMU8"
+    static let consumerSecret = "5af1xaDZGgFXxyRhZBP4iq7sPx3mf3sgPJfckMh373L6u4t7dh"
 
     static let requestTokenURL = "https://api.twitter.com/oauth/request_token"
     static let authorizeURL = "https://api.twitter.com/oauth/authorize"
@@ -67,6 +67,18 @@ class APIManager: SessionManager {
                     completion(User(dictionary: userDictionary), nil)
                 }
         }
+    }
+    
+    // MARK: Logout
+    func logout() {
+        // 1. Clear current user
+        User.current = nil
+        
+        // TODO: 2. Deauthorize OAuth tokens
+        
+        
+        // 3. Post logout notification
+        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
     }
         
     func getHomeTimeLine(completion: @escaping ([Tweet]?, Error?) -> ()) {
