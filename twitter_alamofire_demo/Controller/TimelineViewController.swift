@@ -26,7 +26,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
-        tableView.rowHeight = 280
+        //tableView.rowHeight = 280
         
         // pull-to-refresh
         refreshControl = UIRefreshControl()
