@@ -8,12 +8,17 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class TimelineViewController: UIViewController, UITableViewDataSource, ComposeViewControllerDelegate {
+    func did(post: Tweet) {
+        updateUserInformation()
+        completeNetworkRequest()
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     var tweets : [Tweet] = []
     var refreshControl: UIRefreshControl!
+    var viewDidAppear: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +28,7 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         
         // tableView data source
         tableView.dataSource = self
-        tableView.delegate = self
+        //tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         //tableView.rowHeight = 280
@@ -37,6 +42,13 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         self.completeNetworkRequest()
         
         // Do any additional setup after loading the view.
+        viewDidAppear = true;
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if viewDidAppear {
+            self.completeNetworkRequest()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,6 +82,11 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    
+    @IBAction func onTapCompose(_ sender: Any) {
+        self.performSegue(withIdentifier: "ComposeSegue", sender: nil)
+    }
+    
     @IBAction func onLogoutButton(_ sender: Any) {
         APIManager.shared.logout()
     }
@@ -87,5 +104,33 @@ class TimelineViewController: UIViewController, UITableViewDelegate, UITableView
         cell.updateAllContent()
         cell.parentView = self as TimelineViewController
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.updateUserInformation()
+        
+        if (segue.identifier == "ComposeSegue") {
+            if let composeView = segue.destination as? ComposeViewController {
+                composeView.delegate = self
+                composeView.user = User.current
+            }
+        }
+        
+        if (segue.identifier == "DetailSegue") {
+            if let detailView = segue.destination as? DetailViewController {
+                if let cell = sender as! TweetCell? {
+                    detailView.tweet = tweets[(cell.indexPath?.row)!]
+                }
+                detailView.user = User.current
+            }
+        }
+        
+        if (segue.identifier == "ProfileSegue") {
+            if let profileView = segue.destination as? ProfileViewController {
+                profileView.user = User.current
+            }
+            
+        }
+        
     }
 }

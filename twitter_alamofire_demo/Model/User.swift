@@ -16,6 +16,13 @@ class User: NSObject {
     var screenName: String?
     var profilepic: URL?
     
+    var bannerpic: URL?
+    var friendcount: Int?
+    var followercount : Int?
+    var userid: Int64?
+    var favoritecount: Int?
+    var statusCount : Int?
+    
     init(dictionary: [String : Any]) {
         super.init()
         self.dictionary = dictionary
@@ -28,6 +35,10 @@ class User: NSObject {
         if let profileImageUrl: String = dictionary["profile_image_url_https"] as? String {
             profilepic = URL(string: profileImageUrl)!
         }
+        
+        friendcount = dictionary["friends_count"] as? Int
+        followercount = dictionary["followers_count"] as? Int
+        statusCount = dictionary["statuses_count"] as? Int
     }
     
     private static var _current: User?
